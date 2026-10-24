@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#090711">
+<meta name="description" content="KH WALLET PRO — цифровой кошелёк и управление портфелем.">
 <title>KH WALLET PRO</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
@@ -21,14 +22,10 @@
 }
 *{box-sizing:border-box}
 body{
-  margin:0;
-  color:var(--text);
-  background:
-    radial-gradient(ellipse at 50% -15%,#35205d 0%,transparent 48%),
-    var(--bg);
+  margin:0;color:var(--text);
+  background:radial-gradient(ellipse at 50% -15%,#35205d 0%,transparent 48%),var(--bg);
   font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-  min-height:100vh;
-  padding-bottom:95px;
+  min-height:100vh;padding-bottom:95px;
 }
 button,input{font:inherit}
 button{cursor:pointer}
@@ -37,169 +34,78 @@ button:disabled{opacity:.55;cursor:wait}
 .muted{color:var(--muted)}
 .small{font-size:12px}
 header{
-  position:sticky;
-  top:0;
-  z-index:5;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:17px 20px;
-  background:#0b0913eF;
-  border-bottom:1px solid #ffffff0d;
-  backdrop-filter:blur(18px);
+  position:sticky;top:0;z-index:5;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:17px 20px;background:#0b0913ef;
+  border-bottom:1px solid #ffffff0d;backdrop-filter:blur(18px);
 }
 .logo{font-size:21px;font-weight:900;letter-spacing:1.5px}
 .logo span{color:var(--purple)}
 .status-dot{
-  display:inline-block;
-  width:7px;height:7px;
-  background:var(--green);
-  border-radius:50%;
-  margin-right:6px;
-  box-shadow:0 0 12px #54e0a1;
+  display:inline-block;width:7px;height:7px;background:var(--green);
+  border-radius:50%;margin-right:6px;box-shadow:0 0 12px #54e0a1;
 }
 .pill{
-  border:1px solid #443261;
-  background:#201632;
-  color:#d8c4ff;
-  border-radius:30px;
-  padding:7px 10px;
-  font-size:10px;
-  letter-spacing:1px;
+  border:1px solid #443261;background:#201632;color:#d8c4ff;
+  border-radius:30px;padding:7px 10px;font-size:10px;letter-spacing:1px;
 }
 main{max-width:900px;margin:auto;padding:22px 16px}
 h1{font-size:30px;margin:7px 0 5px;letter-spacing:-.8px}
 h2{font-size:19px;margin:0 0 17px}
 h3{margin:0}
 p{line-height:1.55}
-.eyebrow{
-  color:#b89aff;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:2px;
-}
+.eyebrow{color:#b89aff;font-size:10px;font-weight:800;letter-spacing:2px}
 .card{
   background:linear-gradient(145deg,#191527,#100e19);
-  border:1px solid var(--border);
-  border-radius:22px;
-  padding:20px;
-  margin:16px 0;
-  box-shadow:0 14px 40px #0002;
+  border:1px solid var(--border);border-radius:22px;padding:20px;
+  margin:16px 0;box-shadow:0 14px 40px #0002;
 }
 .hero{
-  position:relative;
-  overflow:hidden;
-  padding:25px 22px;
-  border-color:#60409b;
-  background:
-    radial-gradient(ellipse at 100% 0%,#8050dd55,transparent 55%),
-    linear-gradient(135deg,#28164a,#171124 70%);
+  position:relative;overflow:hidden;padding:25px 22px;border-color:#60409b;
+  background:radial-gradient(ellipse at 100% 0%,#8050dd55,transparent 55%),linear-gradient(135deg,#28164a,#171124 70%);
 }
 .hero:after{
-  content:"";
-  position:absolute;
-  width:150px;height:150px;
-  border:1px solid #ffffff0b;
-  border-radius:50%;
-  right:-65px;bottom:-95px;
-  box-shadow:0 0 0 22px #ffffff05,0 0 0 44px #ffffff03;
-  pointer-events:none;
+  content:"";position:absolute;width:150px;height:150px;border:1px solid #ffffff0b;
+  border-radius:50%;right:-65px;bottom:-95px;
+  box-shadow:0 0 0 22px #ffffff05,0 0 0 44px #ffffff03;pointer-events:none;
 }
 .row{display:flex;justify-content:space-between;align-items:center;gap:12px}
 .balance{
-  font-size:clamp(34px,8vw,43px);
-  font-weight:850;
-  letter-spacing:-1.6px;
-  margin:15px 0 8px;
-  overflow-wrap:anywhere;
+  font-size:clamp(34px,8vw,43px);font-weight:850;letter-spacing:-1.6px;
+  margin:15px 0 8px;overflow-wrap:anywhere;
 }
 .balance-sub{font-size:12px;color:#c4b5e0}
-.icon-btn{
-  background:#ffffff10;
-  border:1px solid #ffffff18;
-  color:white;
-  border-radius:11px;
-  padding:9px 11px;
-}
+.icon-btn{background:#ffffff10;border:1px solid #ffffff18;color:white;border-radius:11px;padding:9px 11px}
 .actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
 .btn{
-  width:100%;
-  padding:13px 15px;
-  border:0;
-  border-radius:12px;
+  width:100%;padding:13px 15px;border:0;border-radius:12px;
   background:linear-gradient(135deg,var(--purple),var(--purple2));
-  color:white;
-  font-weight:750;
-  box-shadow:0 5px 18px #7845e52b;
+  color:white;font-weight:750;box-shadow:0 5px 18px #7845e52b;
 }
-.btn.secondary{
-  background:#ffffff0b;
-  border:1px solid #ffffff16;
-  box-shadow:none;
-}
+.btn.secondary{background:#ffffff0b;border:1px solid #ffffff16;box-shadow:none}
 .btn.danger{background:#3a1724;color:#ffb7c4;box-shadow:none}
 .btn.mini{width:auto;padding:9px 12px;font-size:12px}
 input{
-  width:100%;
-  padding:14px;
-  margin:8px 0 15px;
-  background:#0c0a13;
-  color:white;
-  border:1px solid #342c47;
-  border-radius:12px;
-  outline:none;
+  width:100%;padding:14px;margin:8px 0 15px;background:#0c0a13;color:white;
+  border:1px solid #342c47;border-radius:12px;outline:none;
 }
 input:focus{border-color:var(--purple)}
 label{font-size:12px;color:#c9c2d8}
 .tabs{display:flex;gap:8px;margin-bottom:20px}
-.tab{
-  flex:1;
-  padding:12px;
-  border:1px solid var(--border);
-  border-radius:12px;
-  color:white;
-  background:#0f0d17;
-}
+.tab{flex:1;padding:12px;border:1px solid var(--border);border-radius:12px;color:white;background:#0f0d17}
 .tab.active{background:#2b1d43;border-color:var(--purple)}
 .notice{
-  background:#181329;
-  border:1px solid #382856;
-  color:#c9b8ef;
-  border-radius:13px;
-  padding:12px;
-  font-size:12px;
-  line-height:1.6;
-  margin:14px 0;
+  background:#181329;border:1px solid #382856;color:#c9b8ef;
+  border-radius:13px;padding:12px;font-size:12px;line-height:1.6;margin:14px 0;
 }
-.message{
-  white-space:pre-wrap;
-  overflow-wrap:anywhere;
-  padding:12px;
-  border-radius:10px;
-  font-size:13px;
-  margin:10px 0;
-}
+.message{white-space:pre-wrap;overflow-wrap:anywhere;padding:12px;border-radius:10px;font-size:13px;margin:10px 0}
 .error{background:#361923;color:#ffb6c4}
 .success{background:#103025;color:#a8f3cf}
 .asset-list{display:flex;flex-direction:column;gap:10px}
-.asset{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:13px;
-  background:#ffffff04;
-  border:1px solid #ffffff0a;
-  border-radius:15px;
-}
+.asset{display:flex;align-items:center;gap:12px;padding:13px;background:#ffffff04;border:1px solid #ffffff0a;border-radius:15px}
 .coin-icon{
-  flex-shrink:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:43px;height:43px;
-  border-radius:14px;
-  background:#29213a;
-  font-size:20px;font-weight:bold;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  width:43px;height:43px;border-radius:14px;background:#29213a;font-size:20px;font-weight:bold;
 }
 .coin-info{flex:1;min-width:0}
 .coin-name{font-weight:750;font-size:14px}
@@ -210,53 +116,27 @@ label{font-size:12px;color:#c9c2d8}
 .search{margin:0 0 14px}
 .section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}
 .section-head h2{margin:0}
-.transaction{
-  display:flex;align-items:center;gap:11px;
-  padding:13px 0;border-bottom:1px solid #ffffff0d;
-}
+.transaction{display:flex;align-items:center;gap:11px;padding:13px 0;border-bottom:1px solid #ffffff0d}
 .transaction:last-child{border-bottom:0}
-.tx-icon{
-  width:38px;height:38px;border-radius:13px;
-  display:grid;place-items:center;background:#29203a;
-}
+.tx-icon{width:38px;height:38px;border-radius:13px;display:grid;place-items:center;background:#29203a}
 .tx-main{flex:1;min-width:0}
 .tx-title{font-size:13px;font-weight:bold;overflow-wrap:anywhere}
 .tx-date{font-size:11px;color:var(--muted);margin-top:5px}
 .tx-amount{font-size:13px;font-weight:bold;white-space:nowrap}
 .positive{color:var(--green)}
 .negative{color:var(--red)}
-.chart{
-  width:100%;
-  height:115px;
-  display:block;
-  overflow:visible;
-}
+.chart{width:100%;height:115px;display:block;overflow:visible}
 .chart-labels{display:flex;justify-content:space-between;color:var(--muted);font-size:10px}
 .bottom-nav{
-  position:fixed;
-  bottom:0;left:0;right:0;
-  z-index:8;
+  position:fixed;bottom:0;left:0;right:0;z-index:8;
   display:flex;justify-content:space-around;
   padding:10px 6px calc(10px + env(safe-area-inset-bottom));
-  background:#100d19f5;
-  border-top:1px solid var(--border);
-  backdrop-filter:blur(20px);
+  background:#100d19f5;border-top:1px solid var(--border);backdrop-filter:blur(20px);
 }
-.nav-btn{
-  flex:1;
-  border:0;
-  background:transparent;
-  color:#89839e;
-  font-size:10px;
-  padding:7px 2px;
-}
+.nav-btn{flex:1;border:0;background:transparent;color:#89839e;font-size:10px;padding:7px 2px}
 .nav-btn span{display:block;font-size:20px;margin-bottom:5px}
 .nav-btn.active{color:#c7aaff}
-.profile-line{
-  padding:12px 0;
-  border-bottom:1px solid #ffffff0c;
-  overflow-wrap:anywhere;
-}
+.profile-line{padding:12px 0;border-bottom:1px solid #ffffff0c;overflow-wrap:anywhere}
 footer{text-align:center;padding:20px;color:#777188;font-size:11px}
 @media(min-width:650px){
   main{padding-top:30px}
@@ -267,7 +147,7 @@ footer{text-align:center;padding:20px;color:#777188;font-size:11px}
 <body>
 <header>
   <div class="logo">KH <span>WALLET</span></div>
-  <div class="pill"><span class="status-dot"></span>DEMO MODE</div>
+  <div class="pill"><span class="status-dot"></span>ONLINE</div>
 </header>
 
 <main>
@@ -281,7 +161,7 @@ footer{text-align:center;padding:20px;color:#777188;font-size:11px}
     <div class="card hero">
       <div class="eyebrow">YOUR DIGITAL SPACE</div>
       <h1>Твой мир.<br>Твои активы.</h1>
-      <p class="balance-sub">Управляй демонстрационным портфелем в одном месте.</p>
+      <p class="balance-sub">Управляй своим портфелем в одном месте.</p>
       <div class="row" style="justify-content:flex-start;margin-top:18px">
         <span class="pill">🔐 Защищённый вход</span>
         <span class="pill">✦ Web3 style</span>
@@ -305,7 +185,7 @@ footer{text-align:center;padding:20px;color:#777188;font-size:11px}
         <div id="authMessage" aria-live="polite"></div>
         <button id="authSubmit" class="btn" type="submit">Войти в аккаунт</button>
       </form>
-      <div class="notice">Демо-кошелёк: реальные криптовалютные средства и блокчейн-переводы не поддерживаются.</div>
+      <div class="notice">Пополнения, котировки и переводы в текущей версии являются виртуальными. Реальные деньги и блокчейн-переводы не поддерживаются.</div>
     </div>
   </section>
 
@@ -322,13 +202,13 @@ footer{text-align:center;padding:20px;color:#777188;font-size:11px}
     <section id="homePage">
       <div class="card hero">
         <div class="row">
-          <span class="balance-sub">Общий демо-баланс</span>
+          <span class="balance-sub">Общий баланс</span>
           <button id="toggleBalance" class="icon-btn" type="button" aria-label="Скрыть баланс">◉</button>
         </div>
         <div id="balance" class="balance">$1,000.00</div>
         <div class="row">
-          <span class="balance-sub">USD · Виртуальные средства</span>
-          <span class="pill">DEMO</span>
+          <span class="balance-sub">USD · Баланс аккаунта</span>
+          <span class="pill">WALLET</span>
         </div>
         <div class="actions">
           <button id="depositBtn" class="btn" type="button">＋ Пополнить</button>
@@ -341,32 +221,32 @@ footer{text-align:center;padding:20px;color:#777188;font-size:11px}
           <h2>Обзор портфеля</h2>
           <span class="pill">3 АКТИВА</span>
         </div>
-        <div class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
-          <div class="coin">
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+          <div>
             <div class="coin-icon">₿</div>
             <div class="coin-name">BTC</div>
             <div class="coin-symbol">Bitcoin</div>
           </div>
-          <div class="coin">
+          <div>
             <div class="coin-icon">Ξ</div>
             <div class="coin-name">ETH</div>
             <div class="coin-symbol">Ethereum</div>
           </div>
-          <div class="coin">
+          <div>
             <div class="coin-icon">₮</div>
             <div class="coin-name">USDT</div>
             <div class="coin-symbol">Tether</div>
           </div>
         </div>
-        <p class="muted small">Цены и активы в этой версии не подключены к реальному рынку.</p>
+        <p class="muted small">Рыночные цены и подключение блокчейна пока не настроены.</p>
       </div>
 
       <div class="card">
         <div class="section-head">
           <h2>Активность баланса</h2>
-          <span class="pill">DEMO CHART</span>
+          <span class="pill">PORTFOLIO</span>
         </div>
-        <svg class="chart" viewBox="0 0 320 110" preserveAspectRatio="none" role="img" aria-label="Демонстрационный график">
+        <svg class="chart" viewBox="0 0 320 110" preserveAspectRatio="none" role="img" aria-label="Иллюстративный график баланса">
           <defs>
             <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stop-color="#9561ff" stop-opacity=".4"/>
@@ -377,7 +257,7 @@ footer{text-align:center;padding:20px;color:#777188;font-size:11px}
           <path d="M0 80 L35 65 L65 72 L100 42 L135 53 L170 25 L205 43 L240 18 L275 33 L320 8" fill="none" stroke="#a47aff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <div class="chart-labels"><span>ПН</span><span>ВТ</span><span>СР</span><span>ЧТ</span><span>ПТ</span><span>СБ</span><span>ВС</span></div>
-        <p class="muted small">Иллюстративный график, не реальные исторические данные.</p>
+        <p class="muted small">График иллюстративный и не отражает реальные рыночные данные.</p>
       </div>
 
       <div class="card">
@@ -394,7 +274,7 @@ footer{text-align:center;padding:20px;color:#777188;font-size:11px}
         <h2>Мои активы</h2>
         <input id="assetSearch" class="search" type="search" placeholder="⌕ Поиск актива...">
         <div id="assetList" class="asset-list"></div>
-        <div class="notice">Демонстрационные цены приведены только для примера дизайна.</div>
+        <div class="notice">Котировки здесь не подключены к биржам и приведены для отображения интерфейса.</div>
       </div>
     </section>
 
@@ -403,7 +283,7 @@ footer{text-align:center;padding:20px;color:#777188;font-size:11px}
         <h2>История операций</h2>
         <div id="fullTransactions"></div>
         <button id="clearHistory" class="btn secondary" type="button">Очистить историю на этом устройстве</button>
-        <p class="muted small">История хранится локально в браузере и не является серверной записью.</p>
+        <p class="muted small">История хранится в браузере на этом устройстве, а не в базе данных аккаунта.</p>
       </div>
     </section>
 
@@ -413,8 +293,8 @@ footer{text-align:center;padding:20px;color:#777188;font-size:11px}
         <div class="profile-line"><div class="muted small">Имя пользователя</div><div id="profileUsername">—</div></div>
         <div class="profile-line"><div class="muted small">Электронная почта</div><div id="profileEmail"></div></div>
         <div class="profile-line"><div class="muted small">ID аккаунта</div><div id="profileId"></div></div>
-        <div class="profile-line"><div class="muted small">Тип аккаунта</div><div>Пользователь · Demo</div></div>
-        <div class="notice">Это не административная панель. Управление другими аккаунтами должно выполняться через защищённый сервер.</div>
+        <div class="profile-line"><div class="muted small">Тип аккаунта</div><div>Пользователь</div></div>
+        <div class="notice">Баланс и операции в этой версии не являются реальными финансовыми активами.</div>
       </div>
     </section>
 
@@ -429,7 +309,7 @@ footer{text-align:center;padding:20px;color:#777188;font-size:11px}
   <button class="nav-btn" data-page="profilePage" type="button"><span>♙</span>Профиль</button>
 </nav>
 
-<footer>KH WALLET PRO · DEMO VERSION</footer>
+<footer>KH WALLET PRO</footer>
 
 <script>
 (function(){
@@ -447,9 +327,9 @@ footer{text-align:center;padding:20px;color:#777188;font-size:11px}
   let balanceHidden = false;
 
   const assets = [
-    {name:"Bitcoin",symbol:"BTC",icon:"₿",price:"Демо-котировка",change:"+2.40%"},
-    {name:"Ethereum",symbol:"ETH",icon:"Ξ",price:"Демо-котировка",change:"+1.80%"},
-    {name:"Tether",symbol:"USDT",icon:"₮",price:"Демо-котировка",change:"Стабильный актив"}
+    {name:"Bitcoin",symbol:"BTC",icon:"₿",price:"Не подключено",change:"—"},
+    {name:"Ethereum",symbol:"ETH",icon:"Ξ",price:"Не подключено",change:"—"},
+    {name:"Tether",symbol:"USDT",icon:"₮",price:"Не подключено",change:"—"}
   ];
 
   function show(id){$(id).classList.remove("hidden")}
@@ -487,7 +367,7 @@ footer{text-align:center;padding:20px;color:#777188;font-size:11px}
       transactions=raw?JSON.parse(raw):[];
       if(!Array.isArray(transactions))transactions=[];
       if(!raw){
-        transactions=[{type:"Начальный демо-баланс",amount:1000,date:new Date().toISOString()}];
+        transactions=[{type:"Начальный баланс аккаунта",amount:1000,date:new Date().toISOString()}];
         save();
       }
     }catch(e){
@@ -566,7 +446,7 @@ footer{text-align:center;padding:20px;color:#777188;font-size:11px}
 
       const symbol=document.createElement("div");
       symbol.className="coin-symbol";
-      symbol.textContent=a.symbol+" · Демо-актив";
+      symbol.textContent=a.symbol;
 
       info.append(name,symbol);
 
@@ -751,10 +631,10 @@ footer{text-align:center;padding:20px;color:#777188;font-size:11px}
     }
 
     balance+=amount;
-    transactions.push({type:"Виртуальное пополнение",amount,date:new Date().toISOString()});
+    transactions.push({type:"Пополнение баланса",amount,date:new Date().toISOString()});
     save();
     render();
-    setMessage("actionMessage","Демо-баланс обновлён. Реальные деньги не переводились.","success");
+    setMessage("actionMessage","Баланс интерфейса обновлён. Реальные деньги не переводились.","success");
   });
 
   $("sendBtn").addEventListener("click",()=>{
@@ -768,23 +648,23 @@ footer{text-align:center;padding:20px;color:#777188;font-size:11px}
     }
 
     if(amount>balance){
-      setMessage("actionMessage","Недостаточно виртуальных средств.","error");
+      setMessage("actionMessage","Недостаточно средств на отображаемом балансе.","error");
       return;
     }
 
-    const recipient=prompt("Имя получателя (демо):");
+    const recipient=prompt("Имя получателя:");
     if(recipient===null||!recipient.trim())return;
 
     balance-=amount;
     transactions.push({
-      type:"Демо-перевод: "+recipient.trim(),
+      type:"Перевод: "+recipient.trim(),
       amount:-amount,
       date:new Date().toISOString()
     });
 
     save();
     render();
-    setMessage("actionMessage","Демо-операция записана. Реальный перевод не производился.","success");
+    setMessage("actionMessage","Запись добавлена в локальную историю. Реальный перевод не производился.","success");
   });
 
   $("seeAll").addEventListener("click",()=>navigate("historyPage"));
