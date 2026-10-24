@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KH WALLET</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b0b14;
+    color: white;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 8%;
+    border-bottom: 1px solid #242439;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #8b5cf6;
+}
+
+nav a {
+    color: #ddd;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #a78bfa;
+}
+
+.hero {
+    min-height: 78vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.badge {
+    padding: 9px 16px;
+    border: 1px solid #49377d;
+    border-radius: 30px;
+    color: #c4b5fd;
+    background: #171027;
+    font-size: 12px;
+    margin-bottom: 28px;
+}
+
+h1 {
+    font-size: clamp(40px, 8vw, 76px);
+    line-height: 1.1;
+    margin-bottom: 22px;
+}
+
+h1 span {
+    color: #9b7aff;
+}
+
+.description {
+    color: #a5a5bb;
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 540px;
+    margin-bottom: 35px;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button {
+    padding: 15px 28px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.primary {
+    background: #8055f6;
+    color: white;
+    border: 1px solid #8055f6;
+    box-shadow: 0 0 30px #8055f633;
+}
+
+.primary:hover {
+    background: #956fff;
+    transform: translateY(-2px);
+}
+
+.secondary {
+    color: white;
+    background: #171725;
+    border: 1px solid #38384e;
+}
+
+.secondary:hover {
+    border-color: #8b5cf6;
+}
+
+.wallet-card {
+    margin-top: 55px;
+    width: min(100%, 380px);
+    padding: 24px;
+    border-radius: 20px;
+    text-align: left;
+    background: linear-gradient(135deg, #21153c, #151523);
+    border: 1px solid #493477;
+    box-shadow: 0 15px 60px #6d28d922;
+}
+
+.card-label {
+    color: #aaa0c5;
+    font-size: 13px;
+}
+
+.balance {
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.demo {
+    display: inline-block;
+    margin-top: 15px;
+    color: #c4b5fd;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+footer {
+    padding: 22px;
+    text-align: center;
+    color: #66667e;
+    border-top: 1px solid #242439;
+    font-size: 12px;
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 20px;
+    }
+
+    nav a {
+        margin-left: 10px;
+        font-size: 12px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .description {
+        font-size: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">KH <span>WALLET</span></div>
+    <nav>
+        <a href="#home">Главная</a>
+        <a href="#wallet">Кошелёк</a>
+    </nav>
+</header>
+
+<main class="hero" id="home">
+    <div class="badge">◆ ВАШ ЦИФРОВОЙ КОШЕЛЁК</div>
+
+    <h1>Добро пожаловать<br>в <span>KH WALLET</span></h1>
+
+    <p class="description">
+        Современный интерфейс для управления цифровыми активами.
+        Простой дизайн, удобная навигация и ваш кошелёк в одном месте.
+    </p>
+
+    <div class="buttons">
+        <button class="primary" onclick="showMessage('Вход будет добавлен на следующем этапе.')">
+            Войти
+        </button>
+
+        <button class="secondary" onclick="showMessage('Регистрация будет добавлена на следующем этапе.')">
+            Регистрация
+        </button>
+    </div>
+
+    <div class="wallet-card" id="wallet">
+        <div class="card-label">ДЕМО-БАЛАНС</div>
+        <div class="balance">0.00 USDT</div>
+        <div class="demo">● DEMO ACCOUNT · ВИРТУАЛЬНЫЕ СРЕДСТВА</div>
+    </div>
+</main>
+
+<footer>
+    KH WALLET © 2026 · Демонстрационный интерфейс
+</footer>
+
+<script>
+function showMessage(message) {
+    alert(message);
+}
+</script>
+
+</body>
+</html>
