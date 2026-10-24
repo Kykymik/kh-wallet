@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#09090f">
-<title>KH WALLET — Digital Wallet</title>
+<title>KH WALLET</title>
 
 <style>
 * {
@@ -15,11 +15,11 @@
 
 :root {
   --bg: #09090f;
-  --panel: #12121d;
+  --panel: #151420;
   --purple: #8b5cf6;
-  --purple-light: #b69aff;
+  --light-purple: #c4b5fd;
   --text: #f7f5ff;
-  --muted: #9693aa;
+  --muted: #a09bb4;
   --border: rgba(255,255,255,.09);
 }
 
@@ -30,11 +30,8 @@ body {
   min-height: 100vh;
 }
 
-button, a {
-  font: inherit;
-}
-
 button {
+  font: inherit;
   cursor: pointer;
 }
 
@@ -44,7 +41,7 @@ button {
 }
 
 header {
-  height: 82px;
+  min-height: 82px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -61,90 +58,85 @@ header {
 }
 
 .logo-icon {
-  width: 42px;
-  height: 42px;
+  width: 43px;
+  height: 43px;
   display: grid;
   place-items: center;
   border-radius: 14px;
-  background: linear-gradient(135deg, #a78bfa, #6d28d9);
-  box-shadow: 0 0 30px #8b5cf644;
-  font-size: 19px;
+  background: linear-gradient(135deg, #b69aff, #6d28d9);
+  box-shadow: 0 0 28px #8b5cf644;
 }
 
 .logo span {
-  color: var(--purple-light);
+  color: var(--light-purple);
 }
 
-.header-button {
-  border: 1px solid #6543a7;
-  background: #171024;
-  color: white;
+.login-btn {
+  padding: 12px 20px;
+  border: 1px solid #6945a9;
   border-radius: 11px;
-  padding: 11px 19px;
-  transition: .2s;
+  background: #191226;
+  color: white;
 }
 
-.header-button:hover {
-  background: #281747;
+.login-btn:hover {
+  background: #2b1a47;
 }
 
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 80px 0 48px;
   text-align: center;
+  padding: 80px 0 55px;
 }
 
 .hero::before {
   content: "";
   position: absolute;
-  width: 440px;
+  width: 450px;
   height: 300px;
-  background: #713ce72a;
-  filter: blur(100px);
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
+  background: #713ce72b;
+  filter: blur(100px);
   pointer-events: none;
 }
 
 .hero-content {
   position: relative;
-  z-index: 1;
 }
 
 .badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: #c4b5fd;
+  display: inline-block;
+  margin-bottom: 27px;
+  padding: 10px 16px;
+  color: var(--light-purple);
   background: #8b5cf617;
-  border: 1px solid #8b5cf64d;
-  border-radius: 50px;
-  padding: 9px 15px;
+  border: 1px solid #8b5cf64a;
+  border-radius: 40px;
   font-size: 11px;
   font-weight: bold;
-  letter-spacing: 1.3px;
-  margin-bottom: 28px;
+  letter-spacing: 1.2px;
 }
 
 h1 {
-  font-size: clamp(42px, 8vw, 76px);
-  letter-spacing: -3px;
-  line-height: 1.08;
   margin-bottom: 22px;
+  font-size: clamp(42px, 8vw, 76px);
+  line-height: 1.1;
+  letter-spacing: -2px;
 }
 
-.gradient-text {
-  background: linear-gradient(90deg, #c4b5fd, #8b5cf6, #e0d5ff);
-  -webkit-background-clip: text;
+.gradient {
+  background: linear-gradient(90deg, #d5c8ff, #9568ff, #e5dfff);
   background-clip: text;
+  -webkit-background-clip: text;
   color: transparent;
 }
 
 .description {
-  max-width: 540px;
-  margin: 0 auto;
+  max-width: 550px;
+  margin: auto;
   color: var(--muted);
   font-size: 16px;
   line-height: 1.8;
@@ -153,17 +145,17 @@ h1 {
 .actions {
   display: flex;
   justify-content: center;
-  gap: 13px;
-  margin-top: 30px;
+  gap: 14px;
   flex-wrap: wrap;
+  margin-top: 30px;
 }
 
 .btn {
-  border-radius: 12px;
   padding: 15px 25px;
-  font-weight: bold;
+  border-radius: 12px;
   border: 1px solid transparent;
-  transition: transform .2s, box-shadow .2s;
+  font-weight: bold;
+  transition: .2s;
 }
 
 .btn:hover {
@@ -172,85 +164,69 @@ h1 {
 
 .btn-primary {
   color: white;
-  background: linear-gradient(135deg, #9b70ff, #6d35d5);
+  background: linear-gradient(135deg, #a17aff, #7139dc);
   box-shadow: 0 8px 30px #8b5cf633;
-}
-
-.btn-primary:hover {
-  box-shadow: 0 10px 35px #8b5cf655;
 }
 
 .btn-secondary {
   color: white;
   background: #171722;
-  border-color: #343044;
-}
-
-.section-title {
-  font-size: 22px;
-  margin-bottom: 8px;
-}
-
-.section-subtitle {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.6;
+  border-color: #393348;
 }
 
 .wallet-section {
-  padding: 22px 0 70px;
+  padding: 20px 0 70px;
 }
 
 .section-heading {
   margin-bottom: 22px;
 }
 
+.section-heading h2 {
+  font-size: 23px;
+  margin-bottom: 9px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 17px;
 }
 
 .card {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(145deg, #171522, #11111a);
-  border: 1px solid var(--border);
-  border-radius: 20px;
   padding: 24px;
-  transition: transform .25s, border-color .25s;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: linear-gradient(145deg, #191724, #11111a);
+  transition: .25s;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  border-color: #8b5cf666;
-}
-
-.card::after {
-  content: "";
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  background: #8b5cf611;
-  filter: blur(40px);
-  right: -20px;
-  top: -20px;
+  border-color: #8b5cf677;
 }
 
 .coin {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 24px;
+  margin-bottom: 26px;
 }
 
 .coin-icon {
-  width: 43px;
-  height: 43px;
-  border-radius: 50%;
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
-  font-size: 15px;
+  border-radius: 50%;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -264,14 +240,14 @@ h1 {
   background: #4a3018;
 }
 
-.wallet-icon {
+.kh {
   color: #c4b5fd;
   background: #30204e;
 }
 
 .coin-name {
-  font-weight: bold;
   font-size: 15px;
+  font-weight: bold;
 }
 
 .coin-code {
@@ -281,26 +257,32 @@ h1 {
 }
 
 .balance-label {
-  font-size: 12px;
   color: var(--muted);
+  font-size: 12px;
   margin-bottom: 9px;
 }
 
 .balance {
-  font-size: 26px;
+  font-size: 25px;
   font-weight: bold;
-  letter-spacing: -.5px;
+  overflow-wrap: anywhere;
 }
 
-.demo-note {
-  margin-top: 24px;
-  border: 1px solid #8b5cf633;
-  background: #8b5cf60b;
-  border-radius: 12px;
-  padding: 14px 16px;
-  color: #b8a4e9;
-  font-size: 12px;
-  line-height: 1.7;
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #75dfad;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #55d899;
+  box-shadow: 0 0 12px #55d89966;
 }
 
 footer {
@@ -334,16 +316,16 @@ footer {
 
 .modal-box {
   width: min(100%, 390px);
-  background: #151420;
-  border: 1px solid #8b5cf655;
+  padding: 28px;
+  border: 1px solid #8b5cf666;
   border-radius: 20px;
-  padding: 27px;
+  background: #151420;
   text-align: center;
   box-shadow: 0 20px 80px #0009;
 }
 
 .modal-box h2 {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .modal-box p {
@@ -359,11 +341,7 @@ footer {
 
 @media (max-width: 760px) {
   .hero {
-    padding-top: 65px;
-  }
-
-  h1 {
-    letter-spacing: -1.5px;
+    padding-top: 62px;
   }
 
   .cards {
@@ -371,11 +349,15 @@ footer {
   }
 
   .card {
-    padding: 21px;
+    padding: 22px;
   }
 
   .wallet-section {
     padding-bottom: 45px;
+  }
+
+  h1 {
+    letter-spacing: -1px;
   }
 }
 
@@ -395,7 +377,7 @@ footer {
     <div>KH <span>WALLET</span></div>
   </div>
 
-  <button class="header-button" onclick="showModal('Вход')">
+  <button class="login-btn" onclick="showModal('Вход')">
     Войти ↗
   </button>
 </header>
@@ -407,7 +389,7 @@ footer {
 
       <h1>
         Цифровые активы.<br>
-        <span class="gradient-text">Новый уровень.</span>
+        <span class="gradient">Новый уровень.</span>
       </h1>
 
       <p class="description">
@@ -431,13 +413,12 @@ footer {
 
   <section class="wallet-section container">
     <div class="section-heading">
-      <h2 class="section-title">Ваш цифровой кошелёк</h2>
-      <p class="section-subtitle">
-        Пример отображения виртуальных активов
-      </p>
+      <h2>Ваш кошелёк</h2>
+      <p>Информация о цифровых активах</p>
     </div>
 
     <div class="cards">
+
       <article class="card">
         <div class="coin">
           <div class="coin-icon usdt">₮</div>
@@ -447,7 +428,7 @@ footer {
           </div>
         </div>
 
-        <div class="balance-label">Демо-баланс</div>
+        <div class="balance-label">Баланс</div>
         <div class="balance">0.00 USDT</div>
       </article>
 
@@ -460,29 +441,26 @@ footer {
           </div>
         </div>
 
-        <div class="balance-label">Демо-баланс</div>
+        <div class="balance-label">Баланс</div>
         <div class="balance">0.000000 BTC</div>
       </article>
 
       <article class="card">
         <div class="coin">
-          <div class="coin-icon wallet-icon">✦</div>
+          <div class="coin-icon kh">✦</div>
           <div>
             <div class="coin-name">KH Wallet</div>
-            <div class="coin-code">Виртуальный счёт</div>
+            <div class="coin-code">Аккаунт</div>
           </div>
         </div>
 
-        <div class="balance-label">Статус</div>
-        <div class="balance" style="font-size:22px">
-          Demo Account
+        <div class="balance-label">Статус аккаунта</div>
+        <div class="status">
+          <span class="status-dot"></span>
+          Активен
         </div>
       </article>
-    </div>
 
-    <div class="demo-note">
-      ◈ Демонстрационная версия. Балансы виртуальные.
-      Настоящие криптовалютные операции пока не поддерживаются.
     </div>
   </section>
 </main>
@@ -490,7 +468,7 @@ footer {
 <footer>
   <div class="container footer-inner">
     <span>© 2026 KH WALLET</span>
-    <span>Демонстрационный интерфейс цифрового кошелька</span>
+    <span>Цифровой кошелёк</span>
   </div>
 </footer>
 
@@ -510,7 +488,7 @@ footer {
 function showModal(type) {
   document.getElementById("modal-title").textContent = type;
   document.getElementById("modal-text").textContent =
-    type + " пока не подключены. Это следующий этап разработки KH WALLET.";
+    type + " пока не подключены. Эта функция появится на следующем этапе.";
   document.getElementById("modal").classList.add("open");
 }
 
