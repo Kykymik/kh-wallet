@@ -2,504 +2,201 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#09090f">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KH WALLET</title>
-
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --bg: #09090f;
-  --panel: #151420;
-  --purple: #8b5cf6;
-  --light-purple: #c4b5fd;
-  --text: #f7f5ff;
-  --muted: #a09bb4;
-  --border: rgba(255,255,255,.09);
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
-  min-height: 100vh;
-}
-
-button {
-  font: inherit;
-  cursor: pointer;
-}
-
-.container {
-  width: min(1120px, 92%);
-  margin: auto;
-}
-
-header {
-  min-height: 82px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--border);
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 21px;
-  font-weight: 800;
-  letter-spacing: 1px;
-}
-
-.logo-icon {
-  width: 43px;
-  height: 43px;
-  display: grid;
-  place-items: center;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #b69aff, #6d28d9);
-  box-shadow: 0 0 28px #8b5cf644;
-}
-
-.logo span {
-  color: var(--light-purple);
-}
-
-.login-btn {
-  padding: 12px 20px;
-  border: 1px solid #6945a9;
-  border-radius: 11px;
-  background: #191226;
-  color: white;
-}
-
-.login-btn:hover {
-  background: #2b1a47;
-}
-
-.hero {
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-  padding: 80px 0 55px;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  width: 450px;
-  height: 300px;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #713ce72b;
-  filter: blur(100px);
-  pointer-events: none;
-}
-
-.hero-content {
-  position: relative;
-}
-
-.badge {
-  display: inline-block;
-  margin-bottom: 27px;
-  padding: 10px 16px;
-  color: var(--light-purple);
-  background: #8b5cf617;
-  border: 1px solid #8b5cf64a;
-  border-radius: 40px;
-  font-size: 11px;
-  font-weight: bold;
-  letter-spacing: 1.2px;
-}
-
-h1 {
-  margin-bottom: 22px;
-  font-size: clamp(42px, 8vw, 76px);
-  line-height: 1.1;
-  letter-spacing: -2px;
-}
-
-.gradient {
-  background: linear-gradient(90deg, #d5c8ff, #9568ff, #e5dfff);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.description {
-  max-width: 550px;
-  margin: auto;
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 1.8;
-}
-
-.actions {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-
-.btn {
-  padding: 15px 25px;
-  border-radius: 12px;
-  border: 1px solid transparent;
-  font-weight: bold;
-  transition: .2s;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-}
-
-.btn-primary {
-  color: white;
-  background: linear-gradient(135deg, #a17aff, #7139dc);
-  box-shadow: 0 8px 30px #8b5cf633;
-}
-
-.btn-secondary {
-  color: white;
-  background: #171722;
-  border-color: #393348;
-}
-
-.wallet-section {
-  padding: 20px 0 70px;
-}
-
-.section-heading {
-  margin-bottom: 22px;
-}
-
-.section-heading h2 {
-  font-size: 23px;
-  margin-bottom: 9px;
-}
-
-.section-heading p {
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 17px;
-}
-
-.card {
-  position: relative;
-  overflow: hidden;
-  padding: 24px;
-  border-radius: 20px;
-  border: 1px solid var(--border);
-  background: linear-gradient(145deg, #191724, #11111a);
-  transition: .25s;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  border-color: #8b5cf677;
-}
-
-.coin {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 26px;
-}
-
-.coin-icon {
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.usdt {
-  color: #5ee3bd;
-  background: #123e36;
-}
-
-.btc {
-  color: #ffbd65;
-  background: #4a3018;
-}
-
-.kh {
-  color: #c4b5fd;
-  background: #30204e;
-}
-
-.coin-name {
-  font-size: 15px;
-  font-weight: bold;
-}
-
-.coin-code {
-  color: var(--muted);
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-.balance-label {
-  color: var(--muted);
-  font-size: 12px;
-  margin-bottom: 9px;
-}
-
-.balance {
-  font-size: 25px;
-  font-weight: bold;
-  overflow-wrap: anywhere;
-}
-
-.status {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #75dfad;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #55d899;
-  box-shadow: 0 0 12px #55d89966;
-}
-
-footer {
-  border-top: 1px solid var(--border);
-  padding: 25px 0;
-  color: #777388;
-  font-size: 12px;
-}
-
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  padding: 20px;
-  background: #000b;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal.open {
-  display: flex;
-}
-
-.modal-box {
-  width: min(100%, 390px);
-  padding: 28px;
-  border: 1px solid #8b5cf666;
-  border-radius: 20px;
-  background: #151420;
-  text-align: center;
-  box-shadow: 0 20px 80px #0009;
-}
-
-.modal-box h2 {
-  margin-bottom: 14px;
-}
-
-.modal-box p {
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.7;
-  margin-bottom: 22px;
-}
-
-.modal-box button {
-  width: 100%;
-}
-
-@media (max-width: 760px) {
-  .hero {
-    padding-top: 62px;
-  }
-
-  .cards {
-    grid-template-columns: 1fr;
-  }
-
-  .card {
-    padding: 22px;
-  }
-
-  .wallet-section {
-    padding-bottom: 45px;
-  }
-
-  h1 {
-    letter-spacing: -1px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    transition: none !important;
-  }
-}
+:root{--bg:#09080f;--panel:#15121f;--purple:#8b5cf6;--text:#f7f4ff;--muted:#aaa3bb;--border:#30283e}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at top,#211438 0,#09080f 55%);color:var(--text);font-family:Arial,sans-serif;min-height:100vh}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px max(20px,calc((100% - 1000px)/2));border-bottom:1px solid var(--border)}
+.logo{font-weight:900;letter-spacing:2px;font-size:22px}.logo span{color:var(--purple)}
+button{border:0;border-radius:12px;padding:13px 17px;background:var(--purple);color:white;font-weight:700;cursor:pointer}
+button.secondary{background:#292334;border:1px solid #443754}
+main{max-width:1000px;margin:35px auto;padding:0 18px}
+.eyebrow{color:#b99aff;font-size:12px;letter-spacing:2px;font-weight:bold}
+h1{font-size:clamp(30px,6vw,48px);margin:12px 0}
+p{color:var(--muted);line-height:1.6}
+.card{background:linear-gradient(135deg,#211631,#15121f 70%);border:1px solid var(--border);border-radius:24px;padding:25px;margin-top:25px;box-shadow:0 18px 55px #0005}
+.balance{font-size:clamp(35px,8vw,48px);font-weight:800;margin:15px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:15px;margin-top:18px}
+.tile{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:20px}
+.tile strong{display:block;font-size:20px;margin-top:12px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.hidden{display:none!important}
+input{display:block;width:100%;margin:12px 0;padding:14px;background:#0c0a12;border:1px solid var(--border);border-radius:11px;color:white;font-size:16px}
+label{font-size:13px;color:#d5cce5}
+.modal{position:fixed;inset:0;background:#000b;display:flex;align-items:center;justify-content:center;padding:18px;z-index:5}
+.modalbox{width:100%;max-width:420px;background:#15121f;border:1px solid var(--border);border-radius:22px;padding:24px}
+.notice{font-size:13px;color:var(--muted);margin-top:16px}
+#message{white-space:pre-wrap;font-size:14px;margin-top:12px;color:#d8c7ff}
+footer{text-align:center;padding:35px 15px;color:#817991;font-size:12px}
 </style>
 </head>
-
 <body>
-
-<header class="container">
-  <div class="logo">
-    <div class="logo-icon">KH</div>
-    <div>KH <span>WALLET</span></div>
-  </div>
-
-  <button class="login-btn" onclick="showModal('Вход')">
-    Войти ↗
-  </button>
+<header>
+  <div class="logo">KH <span>WALLET</span></div>
+  <button id="headerBtn" onclick="openAuth()">Войти</button>
 </header>
 
 <main>
-  <section class="hero container">
-    <div class="hero-content">
-      <div class="badge">✦ ВАШ ЦИФРОВОЙ КОШЕЛЁК</div>
+  <div class="eyebrow">ВАШ ЦИФРОВОЙ КАБИНЕТ</div>
+  <h1>Управляй своими активами.</h1>
+  <p>Удобный личный кабинет с доступом к информации о твоём балансе.</p>
 
-      <h1>
-        Цифровые активы.<br>
-        <span class="gradient">Новый уровень.</span>
-      </h1>
+  <section id="guest" class="card">
+    <div class="eyebrow">KH WALLET</div>
+    <h2>Твой кошелёк начинается здесь</h2>
+    <p>Создай аккаунт, чтобы открыть личный кабинет.</p>
+    <div class="row">
+      <button onclick="openAuth('signup')">Создать аккаунт</button>
+      <button class="secondary" onclick="openAuth('login')">Войти</button>
+    </div>
+  </section>
 
-      <p class="description">
-        Добро пожаловать в KH WALLET — современный интерфейс
-        цифрового кошелька с удобной навигацией и стильным дизайном.
-      </p>
-
-      <div class="actions">
-        <button class="btn btn-primary"
-                onclick="showModal('Регистрация')">
-          Создать аккаунт →
-        </button>
-
-        <button class="btn btn-secondary"
-                onclick="showModal('Вход')">
-          Уже есть аккаунт
-        </button>
+  <section id="dashboard" class="hidden">
+    <div class="card">
+      <div class="eyebrow">МОЙ БАЛАНС · ВИРТУАЛЬНЫЙ</div>
+      <div class="balance">$0.00</div>
+      <p id="userEmail">Аккаунт</p>
+      <div class="row">
+        <button onclick="showMessage('В этом интерфейсе переводы пока не подключены.')">Отправить</button>
+        <button class="secondary" onclick="showMessage('Пополнение пока не подключено.')">Пополнить</button>
       </div>
     </div>
-  </section>
-
-  <section class="wallet-section container">
-    <div class="section-heading">
-      <h2>Ваш кошелёк</h2>
-      <p>Информация о цифровых активах</p>
+    <div class="grid">
+      <div class="tile"><span>Bitcoin</span><strong>0.000000 BTC</strong></div>
+      <div class="tile"><span>Ethereum</span><strong>0.0000 ETH</strong></div>
+      <div class="tile"><span>USDT</span><strong>0.00 USDT</strong></div>
     </div>
-
-    <div class="cards">
-
-      <article class="card">
-        <div class="coin">
-          <div class="coin-icon usdt">₮</div>
-          <div>
-            <div class="coin-name">Tether</div>
-            <div class="coin-code">USDT</div>
-          </div>
-        </div>
-
-        <div class="balance-label">Баланс</div>
-        <div class="balance">0.00 USDT</div>
-      </article>
-
-      <article class="card">
-        <div class="coin">
-          <div class="coin-icon btc">₿</div>
-          <div>
-            <div class="coin-name">Bitcoin</div>
-            <div class="coin-code">BTC</div>
-          </div>
-        </div>
-
-        <div class="balance-label">Баланс</div>
-        <div class="balance">0.000000 BTC</div>
-      </article>
-
-      <article class="card">
-        <div class="coin">
-          <div class="coin-icon kh">✦</div>
-          <div>
-            <div class="coin-name">KH Wallet</div>
-            <div class="coin-code">Аккаунт</div>
-          </div>
-        </div>
-
-        <div class="balance-label">Статус аккаунта</div>
-        <div class="status">
-          <span class="status-dot"></span>
-          Активен
-        </div>
-      </article>
-
+    <div class="card">
+      <h3>Мой аккаунт</h3>
+      <p id="profileStatus">Проверка профиля…</p>
+      <button class="secondary" onclick="logout()">Выйти из аккаунта</button>
     </div>
   </section>
+  <p id="message" role="status"></p>
 </main>
 
-<footer>
-  <div class="container footer-inner">
-    <span>© 2026 KH WALLET</span>
-    <span>Цифровой кошелёк</span>
-  </div>
-</footer>
-
-<div class="modal" id="modal" role="dialog"
-     aria-modal="true" aria-labelledby="modal-title"
-     onclick="if(event.target===this)closeModal()">
-  <div class="modal-box">
-    <h2 id="modal-title">KH WALLET</h2>
-    <p id="modal-text"></p>
-    <button class="btn btn-primary" onclick="closeModal()">
-      Понятно
-    </button>
+<div id="authModal" class="modal hidden">
+  <div class="modalbox">
+    <div class="row" style="justify-content:space-between">
+      <h2 id="formTitle">Вход</h2>
+      <button class="secondary" onclick="closeAuth()">✕</button>
+    </div>
+    <form id="authForm">
+      <div id="usernameWrap" class="hidden">
+        <label for="username">Имя пользователя</label>
+        <input id="username" autocomplete="username" maxlength="30" placeholder="Например, khuser">
+      </div>
+      <label for="email">Email</label>
+      <input id="email" type="email" autocomplete="email" required placeholder="you@example.com">
+      <label for="password">Пароль (минимум 8 символов)</label>
+      <input id="password" type="password" minlength="8" required autocomplete="current-password" placeholder="••••••••">
+      <button id="submitBtn" type="submit" style="width:100%">Войти</button>
+    </form>
+    <p id="switchText">Нет аккаунта? <a href="#" onclick="setMode('signup');return false" style="color:#b99aff">Зарегистрироваться</a></p>
+    <div id="authMessage" role="status"></div>
+    <p class="notice">Балансы на сайте виртуальные. Переводы криптовалюты не выполняются.</p>
   </div>
 </div>
 
+<footer>KH WALLET · Личный кабинет</footer>
+
 <script>
-function showModal(type) {
-  document.getElementById("modal-title").textContent = type;
-  document.getElementById("modal-text").textContent =
-    type + " пока не подключены. Эта функция появится на следующем этапе.";
-  document.getElementById("modal").classList.add("open");
-}
+const SUPABASE_URL = 'https://zagxjurbctutpxqzhfle.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_ahVM6UUtzD1phmSlgFp2kA_5tbJ_vKi';
+const $ = id => document.getElementById(id);
+let mode = 'login';
+let accessToken = null;
+let currentUser = null;
 
-function closeModal() {
-  document.getElementById("modal").classList.remove("open");
+function showMessage(text){ $('message').textContent=text; }
+function openAuth(next='login'){ $('authModal').classList.remove('hidden'); setMode(next); }
+function closeAuth(){ $('authModal').classList.add('hidden'); $('authMessage').textContent=''; }
+function setMode(next){
+  mode=next;
+  $('formTitle').textContent=mode==='signup'?'Создание аккаунта':'Вход';
+  $('submitBtn').textContent=mode==='signup'?'Зарегистрироваться':'Войти';
+  $('usernameWrap').classList.toggle('hidden',mode!=='signup');
+  $('password').autocomplete=mode==='signup'?'new-password':'current-password';
+  $('switchText').innerHTML=mode==='signup'
+   ? 'Уже есть аккаунт? <a href="#" onclick="setMode(\\'login\\');return false" style="color:#b99aff">Войти</a>'
+   : 'Нет аккаунта? <a href="#" onclick="setMode(\\'signup\\');return false" style="color:#b99aff">Зарегистрироваться</a>';
+  $('authMessage').textContent='';
 }
-
-document.addEventListener("keydown", function(event) {
-  if (event.key === "Escape") closeModal();
+async function api(path, options={}){
+  const headers={
+    'apikey':SUPABASE_KEY,
+    'Content-Type':'application/json',
+    ...(options.token?{'Authorization':'Bearer '+options.token}:{})
+  };
+  const response=await fetch(SUPABASE_URL+path,{...options,headers:{...headers,...options.headers}});
+  const text=await response.text();
+  let data={};try{data=text?JSON.parse(text):{}}catch{data={message:text}}
+  if(!response.ok)throw new Error(data.msg||data.message||data.error_description||data.error||'Ошибка запроса ('+response.status+')');
+  return data;
+}
+$('authForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const btn=$('submitBtn');
+  btn.disabled=true;$('authMessage').textContent='Подожди…';
+  try{
+    const email=$('email').value.trim();
+    const password=$('password').value;
+    let result;
+    if(mode==='signup'){
+      const username=$('username').value.trim();
+      if(!username){throw new Error('Введи имя пользователя.');}
+      result=await api('/auth/v1/signup',{method:'POST',body:JSON.stringify({email,password,data:{username}})});
+      if(!result.access_token){
+        $('authMessage').textContent='Аккаунт создан. Проверь почту и подтверди email, затем войди.';
+        return;
+      }
+    }else{
+      result=await api('/auth/v1/token?grant_type=password',{method:'POST',body:JSON.stringify({email,password})});
+    }
+    accessToken=result.access_token;
+    currentUser=result.user;
+    if(!accessToken)throw new Error('Вход не завершён. Проверь email и настройки подтверждения почты.');
+    localStorage.setItem('kh_wallet_session',JSON.stringify({access_token:accessToken,refresh_token:result.refresh_token,user:currentUser}));
+    closeAuth();renderDashboard();
+  }catch(err){
+    $('authMessage').textContent=err.message||'Не удалось выполнить запрос.';
+  }finally{btn.disabled=false;}
 });
+async function renderDashboard(){
+  if(!currentUser)return;
+  $('guest').classList.add('hidden');
+  $('dashboard').classList.remove('hidden');
+  $('headerBtn').textContent='Мой аккаунт';
+  $('userEmail').textContent=currentUser.email||'Аккаунт';
+  $('profileStatus').textContent='Аккаунт авторизован';
+  try{
+    await api('/rest/v1/profiles?select=id,username,created_at&id=eq.'+encodeURIComponent(currentUser.id),{method:'GET',token:accessToken});
+    $('profileStatus').textContent='Профиль подключён';
+  }catch(err){
+    $('profileStatus').textContent='Вход выполнен. Профиль пока не удалось загрузить: '+err.message;
+  }
+}
+async function logout(){
+  try{if(accessToken)await api('/auth/v1/logout',{method:'POST',token:accessToken});}catch(e){}
+  localStorage.removeItem('kh_wallet_session');
+  accessToken=null;currentUser=null;
+  $('dashboard').classList.add('hidden');$('guest').classList.remove('hidden');
+  $('headerBtn').textContent='Войти';showMessage('Ты вышел из аккаунта.');
+}
+(async function restoreSession(){
+  try{
+    const saved=JSON.parse(localStorage.getItem('kh_wallet_session')||'null');
+    if(!saved||!saved.access_token||!saved.user)return;
+    accessToken=saved.access_token;currentUser=saved.user;
+    const user=await api('/auth/v1/user',{method:'GET',token:accessToken});
+    currentUser=user;renderDashboard();
+  }catch(e){
+    localStorage.removeItem('kh_wallet_session');
+    accessToken=null;currentUser=null;
+  }
+})();
 </script>
-
 </body>
 </html>
