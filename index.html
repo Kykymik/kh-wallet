@@ -2,539 +2,441 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KH WALLET</title>
-<meta name="theme-color" content="#09090f">
-
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#090711">
+<title>KH WALLET PRO</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <style>
-:root {
-  --bg:#09090f;
-  --card:#13131e;
-  --border:#28283b;
-  --purple:#8b5cf6;
-  --purple2:#6d28d9;
-  --text:#f8fafc;
-  --muted:#9292a8;
-  --green:#34d399;
-  --red:#fb7185;
+:root{
+  --bg:#090711;
+  --panel:#13111e;
+  --panel2:#1b1729;
+  --border:#2b2540;
+  --purple:#9561ff;
+  --purple2:#7141dc;
+  --text:#f8f7ff;
+  --muted:#9691aa;
+  --green:#54e0a1;
+  --red:#ff718b;
 }
-
-* {
-  box-sizing:border-box;
-}
-
-body {
+*{box-sizing:border-box}
+body{
   margin:0;
-  background:var(--bg);
   color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(ellipse at 50% -15%,#35205d 0%,transparent 48%),
+    var(--bg);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  min-height:100vh;
+  padding-bottom:95px;
 }
-
-button,input {
-  font:inherit;
-}
-
-button {
-  cursor:pointer;
-}
-
-header {
+button,input{font:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.55;cursor:wait}
+.hidden{display:none!important}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+header{
+  position:sticky;
+  top:0;
+  z-index:5;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:20px;
-  border-bottom:1px solid var(--border);
-  position:sticky;
-  top:0;
-  z-index:10;
-  background:rgba(9,9,15,.96);
+  padding:17px 20px;
+  background:#0b0913eF;
+  border-bottom:1px solid #ffffff0d;
+  backdrop-filter:blur(18px);
 }
-
-.logo {
-  font-size:23px;
-  font-weight:900;
+.logo{font-size:21px;font-weight:900;letter-spacing:1.5px}
+.logo span{color:var(--purple)}
+.status-dot{
+  display:inline-block;
+  width:7px;height:7px;
+  background:var(--green);
+  border-radius:50%;
+  margin-right:6px;
+  box-shadow:0 0 12px #54e0a1;
+}
+.pill{
+  border:1px solid #443261;
+  background:#201632;
+  color:#d8c4ff;
+  border-radius:30px;
+  padding:7px 10px;
+  font-size:10px;
   letter-spacing:1px;
 }
-
-.logo span {
-  color:var(--purple);
+main{max-width:900px;margin:auto;padding:22px 16px}
+h1{font-size:30px;margin:7px 0 5px;letter-spacing:-.8px}
+h2{font-size:19px;margin:0 0 17px}
+h3{margin:0}
+p{line-height:1.55}
+.eyebrow{
+  color:#b89aff;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:2px;
 }
-
-.badge {
-  background:#21163b;
-  color:#c4b5fd;
-  padding:7px 10px;
-  border-radius:20px;
-  font-size:11px;
-}
-
-main {
-  max-width:1050px;
-  margin:auto;
-  padding:22px 16px 50px;
-}
-
-h1 {
-  font-size:30px;
-  margin:8px 0;
-}
-
-h2 {
-  font-size:21px;
-  margin-top:0;
-}
-
-h3 {
-  margin:0 0 10px;
-}
-
-p {
-  line-height:1.5;
-}
-
-.muted {
-  color:var(--muted);
-}
-
-.small {
-  font-size:12px;
-}
-
-.card {
-  background:var(--card);
+.card{
+  background:linear-gradient(145deg,#191527,#100e19);
   border:1px solid var(--border);
-  border-radius:18px;
+  border-radius:22px;
   padding:20px;
   margin:16px 0;
+  box-shadow:0 14px 40px #0002;
 }
-
-.hero {
-  background:linear-gradient(135deg,#241044,#11101d 70%);
-  border-color:#50318a;
-  padding:26px 22px;
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:25px 22px;
+  border-color:#60409b;
+  background:
+    radial-gradient(ellipse at 100% 0%,#8050dd55,transparent 55%),
+    linear-gradient(135deg,#28164a,#171124 70%);
 }
-
-.balance {
-  font-size:36px;
-  font-weight:800;
+.hero:after{
+  content:"";
+  position:absolute;
+  width:150px;height:150px;
+  border:1px solid #ffffff0b;
+  border-radius:50%;
+  right:-65px;bottom:-95px;
+  box-shadow:0 0 0 22px #ffffff05,0 0 0 44px #ffffff03;
+  pointer-events:none;
+}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.balance{
+  font-size:clamp(34px,8vw,43px);
+  font-weight:850;
+  letter-spacing:-1.6px;
   margin:15px 0 8px;
   overflow-wrap:anywhere;
 }
-
-.btn {
-  border:0;
-  border-radius:11px;
-  padding:13px 16px;
-  background:var(--purple);
+.balance-sub{font-size:12px;color:#c4b5e0}
+.icon-btn{
+  background:#ffffff10;
+  border:1px solid #ffffff18;
   color:white;
-  font-weight:700;
+  border-radius:11px;
+  padding:9px 11px;
+}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.btn{
   width:100%;
-  margin-top:10px;
+  padding:13px 15px;
+  border:0;
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--purple),var(--purple2));
+  color:white;
+  font-weight:750;
+  box-shadow:0 5px 18px #7845e52b;
 }
-
-.btn:hover {
-  background:var(--purple2);
+.btn.secondary{
+  background:#ffffff0b;
+  border:1px solid #ffffff16;
+  box-shadow:none;
 }
-
-.btn.secondary {
-  background:#252536;
-  border:1px solid #39394e;
-}
-
-.btn.danger {
-  background:#421b2a;
-  color:#fecdd3;
-}
-
-.btn.smallbtn {
-  width:auto;
-  padding:9px 12px;
-  margin:0;
-}
-
-input {
-  display:block;
+.btn.danger{background:#3a1724;color:#ffb7c4;box-shadow:none}
+.btn.mini{width:auto;padding:9px 12px;font-size:12px}
+input{
   width:100%;
   padding:14px;
-  margin:9px 0 14px;
-  border-radius:10px;
-  background:#0c0c14;
-  border:1px solid #303044;
+  margin:8px 0 15px;
+  background:#0c0a13;
   color:white;
+  border:1px solid #342c47;
+  border-radius:12px;
   outline:none;
 }
-
-input:focus {
-  border-color:var(--purple);
-}
-
-label {
-  font-size:13px;
-  color:#c5c5d4;
-}
-
-.grid {
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:13px;
-}
-
-.coin {
-  background:#101019;
+input:focus{border-color:var(--purple)}
+label{font-size:12px;color:#c9c2d8}
+.tabs{display:flex;gap:8px;margin-bottom:20px}
+.tab{
+  flex:1;
+  padding:12px;
   border:1px solid var(--border);
-  border-radius:14px;
-  padding:16px;
-  min-width:0;
+  border-radius:12px;
+  color:white;
+  background:#0f0d17;
 }
-
-.coin-icon {
-  font-size:27px;
-  margin-bottom:12px;
-}
-
-.coin-name {
-  font-weight:bold;
-}
-
-.coin-symbol {
-  color:var(--muted);
+.tab.active{background:#2b1d43;border-color:var(--purple)}
+.notice{
+  background:#181329;
+  border:1px solid #382856;
+  color:#c9b8ef;
+  border-radius:13px;
+  padding:12px;
   font-size:12px;
-  margin-top:5px;
+  line-height:1.6;
+  margin:14px 0;
 }
-
-.actions {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+.message{
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  padding:12px;
+  border-radius:10px;
+  font-size:13px;
+  margin:10px 0;
 }
-
-.row {
+.error{background:#361923;color:#ffb6c4}
+.success{background:#103025;color:#a8f3cf}
+.asset-list{display:flex;flex-direction:column;gap:10px}
+.asset{
   display:flex;
-  justify-content:space-between;
   align-items:center;
   gap:12px;
-}
-
-.transaction {
-  padding:14px 0;
-  border-bottom:1px solid var(--border);
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  font-size:14px;
-}
-
-.transaction:last-child {
-  border-bottom:0;
-}
-
-.positive {
-  color:var(--green);
-}
-
-.negative {
-  color:var(--red);
-}
-
-.notice {
-  background:#171326;
-  border:1px solid #3c2c60;
-  color:#d8ccff;
-  border-radius:12px;
   padding:13px;
-  font-size:13px;
-  line-height:1.5;
-  margin:15px 0;
+  background:#ffffff04;
+  border:1px solid #ffffff0a;
+  border-radius:15px;
 }
-
-.error {
-  color:#fda4af;
-  background:#351721;
-  padding:12px;
-  border-radius:10px;
-  font-size:13px;
-  margin:10px 0;
-  overflow-wrap:anywhere;
-}
-
-.success {
-  color:#a7f3d0;
-  background:#103027;
-  padding:12px;
-  border-radius:10px;
-  font-size:13px;
-  margin:10px 0;
-  overflow-wrap:anywhere;
-}
-
-.hidden {
-  display:none !important;
-}
-
-footer {
-  text-align:center;
-  color:var(--muted);
-  font-size:12px;
-  padding:25px 15px;
-}
-
-.tabs {
+.coin-icon{
+  flex-shrink:0;
   display:flex;
-  gap:8px;
-  margin:16px 0;
+  align-items:center;
+  justify-content:center;
+  width:43px;height:43px;
+  border-radius:14px;
+  background:#29213a;
+  font-size:20px;font-weight:bold;
 }
-
-.tab {
+.coin-info{flex:1;min-width:0}
+.coin-name{font-weight:750;font-size:14px}
+.coin-symbol{font-size:11px;color:var(--muted);margin-top:4px}
+.coin-right{text-align:right;min-width:0}
+.coin-price{font-size:14px;font-weight:bold;overflow-wrap:anywhere}
+.change{font-size:11px;color:var(--green);margin-top:4px}
+.search{margin:0 0 14px}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}
+.section-head h2{margin:0}
+.transaction{
+  display:flex;align-items:center;gap:11px;
+  padding:13px 0;border-bottom:1px solid #ffffff0d;
+}
+.transaction:last-child{border-bottom:0}
+.tx-icon{
+  width:38px;height:38px;border-radius:13px;
+  display:grid;place-items:center;background:#29203a;
+}
+.tx-main{flex:1;min-width:0}
+.tx-title{font-size:13px;font-weight:bold;overflow-wrap:anywhere}
+.tx-date{font-size:11px;color:var(--muted);margin-top:5px}
+.tx-amount{font-size:13px;font-weight:bold;white-space:nowrap}
+.positive{color:var(--green)}
+.negative{color:var(--red)}
+.chart{
+  width:100%;
+  height:115px;
+  display:block;
+  overflow:visible;
+}
+.chart-labels{display:flex;justify-content:space-between;color:var(--muted);font-size:10px}
+.bottom-nav{
+  position:fixed;
+  bottom:0;left:0;right:0;
+  z-index:8;
+  display:flex;justify-content:space-around;
+  padding:10px 6px calc(10px + env(safe-area-inset-bottom));
+  background:#100d19f5;
+  border-top:1px solid var(--border);
+  backdrop-filter:blur(20px);
+}
+.nav-btn{
   flex:1;
-  border:1px solid var(--border);
-  background:#13131e;
-  color:white;
-  padding:12px 8px;
-  border-radius:10px;
+  border:0;
+  background:transparent;
+  color:#89839e;
+  font-size:10px;
+  padding:7px 2px;
 }
-
-.tab.active {
-  background:#2b1b49;
-  border-color:var(--purple);
+.nav-btn span{display:block;font-size:20px;margin-bottom:5px}
+.nav-btn.active{color:#c7aaff}
+.profile-line{
+  padding:12px 0;
+  border-bottom:1px solid #ffffff0c;
+  overflow-wrap:anywhere;
 }
-
-@media(max-width:600px) {
-  .grid {
-    grid-template-columns:1fr;
-  }
-
-  .balance {
-    font-size:30px;
-  }
-
-  header {
-    padding:16px;
-  }
-
-  main {
-    padding:18px 13px 40px;
-  }
-
-  .card {
-    padding:17px;
-  }
-
-  h1 {
-    font-size:26px;
-  }
+footer{text-align:center;padding:20px;color:#777188;font-size:11px}
+@media(min-width:650px){
+  main{padding-top:30px}
+  .asset-list.grid-assets{display:grid;grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
-
 <body>
-
 <header>
   <div class="logo">KH <span>WALLET</span></div>
-  <div class="badge">DEMO WALLET</div>
+  <div class="pill"><span class="status-dot"></span>DEMO MODE</div>
 </header>
 
 <main>
-
   <section id="loading" class="card">
-    <h2>KH WALLET</h2>
-    <p class="muted">Подключение к аккаунту...</p>
+    <div class="eyebrow">KH WALLET PRO</div>
+    <h2 style="margin-top:12px">Загрузка кошелька...</h2>
+    <p class="muted">Подключаем аккаунт</p>
   </section>
 
   <section id="authSection" class="hidden">
     <div class="card hero">
-      <div class="badge">DIGITAL WALLET</div>
-      <h1>Твой кошелёк.<br>Твой контроль.</h1>
-      <p class="muted">
-        Создай аккаунт, чтобы открыть личный кабинет KH WALLET.
-      </p>
+      <div class="eyebrow">YOUR DIGITAL SPACE</div>
+      <h1>Твой мир.<br>Твои активы.</h1>
+      <p class="balance-sub">Управляй демонстрационным портфелем в одном месте.</p>
+      <div class="row" style="justify-content:flex-start;margin-top:18px">
+        <span class="pill">🔐 Защищённый вход</span>
+        <span class="pill">✦ Web3 style</span>
+      </div>
     </div>
-
     <div class="card">
       <div class="tabs">
-        <button id="loginTab" class="tab active" type="button">
-          Войти
-        </button>
-        <button id="registerTab" class="tab" type="button">
-          Регистрация
-        </button>
+        <button id="loginTab" class="tab active" type="button">Войти</button>
+        <button id="registerTab" class="tab" type="button">Регистрация</button>
       </div>
-
-      <h2 id="authTitle">Вход в аккаунт</h2>
-
+      <h2 id="authTitle">С возвращением</h2>
       <form id="authForm">
         <div id="usernameWrap" class="hidden">
           <label for="username">Имя пользователя</label>
-          <input
-            id="username"
-            type="text"
-            placeholder="Например, user123"
-            minlength="3"
-            maxlength="30"
-            autocomplete="nickname"
-          >
+          <input id="username" minlength="3" maxlength="30" placeholder="Например, kh_user" autocomplete="nickname">
         </div>
-
         <label for="email">Электронная почта</label>
-        <input
-          id="email"
-          type="email"
-          placeholder="you@example.com"
-          autocomplete="email"
-          required
-        >
-
+        <input id="email" type="email" placeholder="you@example.com" required autocomplete="email">
         <label for="password">Пароль</label>
-        <input
-          id="password"
-          type="password"
-          placeholder="Минимум 6 символов"
-          minlength="6"
-          autocomplete="current-password"
-          required
-        >
-
+        <input id="password" type="password" minlength="6" placeholder="Минимум 6 символов" required autocomplete="current-password">
         <div id="authMessage" aria-live="polite"></div>
-
-        <button id="authSubmit" class="btn" type="submit">
-          Войти
-        </button>
+        <button id="authSubmit" class="btn" type="submit">Войти в аккаунт</button>
       </form>
-
-      <div class="notice">
-        Это демонстрационный кошелёк. Здесь нет реальных криптовалютных
-        средств, депозитов или переводов в блокчейне.
-      </div>
+      <div class="notice">Демо-кошелёк: реальные криптовалютные средства и блокчейн-переводы не поддерживаются.</div>
     </div>
   </section>
 
   <section id="walletSection" class="hidden">
-
-    <div class="row">
+    <div class="row" style="margin-bottom:20px">
       <div>
-        <p class="muted small">ЛИЧНЫЙ КАБИНЕТ</p>
+        <div class="eyebrow">ЛИЧНЫЙ КАБИНЕТ</div>
         <h1 id="welcomeTitle">Привет!</h1>
-        <p id="userEmail" class="muted small"></p>
+        <div id="userEmail" class="muted small"></div>
       </div>
-
-      <button id="logoutBtn" class="btn danger smallbtn" type="button">
-        Выйти
-      </button>
+      <button id="logoutBtn" class="btn secondary mini" type="button">Выйти ↗</button>
     </div>
 
-    <div class="card hero">
-      <div class="row">
-        <span class="muted">Демо-баланс</span>
-        <span class="badge">VIRTUAL</span>
-      </div>
-
-      <div class="balance" id="balance">$1,000.00</div>
-
-      <p class="muted small">
-        Виртуальный баланс для демонстрации интерфейса.
-      </p>
-
-      <div class="actions">
-        <button id="depositBtn" class="btn" type="button">
-          ＋ Пополнить
-        </button>
-
-        <button id="sendBtn" class="btn secondary" type="button">
-          ↗ Отправить
-        </button>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>Мои активы</h2>
-
-      <div class="grid">
-        <div class="coin">
-          <div class="coin-icon">₿</div>
-          <div class="coin-name">Bitcoin</div>
-          <div class="coin-symbol">BTC · Демо-актив</div>
-          <h3 id="btcBalance">0.000000 BTC</h3>
+    <section id="homePage">
+      <div class="card hero">
+        <div class="row">
+          <span class="balance-sub">Общий демо-баланс</span>
+          <button id="toggleBalance" class="icon-btn" type="button" aria-label="Скрыть баланс">◉</button>
         </div>
-
-        <div class="coin">
-          <div class="coin-icon">◆</div>
-          <div class="coin-name">Ethereum</div>
-          <div class="coin-symbol">ETH · Демо-актив</div>
-          <h3 id="ethBalance">0.000000 ETH</h3>
+        <div id="balance" class="balance">$1,000.00</div>
+        <div class="row">
+          <span class="balance-sub">USD · Виртуальные средства</span>
+          <span class="pill">DEMO</span>
         </div>
-
-        <div class="coin">
-          <div class="coin-icon">₮</div>
-          <div class="coin-name">Tether</div>
-          <div class="coin-symbol">USDT · Демо-актив</div>
-          <h3 id="usdtBalance">1,000.00 USDT</h3>
+        <div class="actions">
+          <button id="depositBtn" class="btn" type="button">＋ Пополнить</button>
+          <button id="sendBtn" class="btn secondary" type="button">↗ Перевести</button>
         </div>
       </div>
-    </div>
 
-    <div class="card">
-      <h2>Быстрые действия</h2>
+      <div class="card">
+        <div class="section-head">
+          <h2>Обзор портфеля</h2>
+          <span class="pill">3 АКТИВА</span>
+        </div>
+        <div class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+          <div class="coin">
+            <div class="coin-icon">₿</div>
+            <div class="coin-name">BTC</div>
+            <div class="coin-symbol">Bitcoin</div>
+          </div>
+          <div class="coin">
+            <div class="coin-icon">Ξ</div>
+            <div class="coin-name">ETH</div>
+            <div class="coin-symbol">Ethereum</div>
+          </div>
+          <div class="coin">
+            <div class="coin-icon">₮</div>
+            <div class="coin-name">USDT</div>
+            <div class="coin-symbol">Tether</div>
+          </div>
+        </div>
+        <p class="muted small">Цены и активы в этой версии не подключены к реальному рынку.</p>
+      </div>
 
-      <button id="historyBtn" class="btn secondary" type="button">
-        История операций
-      </button>
+      <div class="card">
+        <div class="section-head">
+          <h2>Активность баланса</h2>
+          <span class="pill">DEMO CHART</span>
+        </div>
+        <svg class="chart" viewBox="0 0 320 110" preserveAspectRatio="none" role="img" aria-label="Демонстрационный график">
+          <defs>
+            <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#9561ff" stop-opacity=".4"/>
+              <stop offset="100%" stop-color="#9561ff" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0 80 L35 65 L65 72 L100 42 L135 53 L170 25 L205 43 L240 18 L275 33 L320 8 L320 110 L0 110 Z" fill="url(#area)"/>
+          <path d="M0 80 L35 65 L65 72 L100 42 L135 53 L170 25 L205 43 L240 18 L275 33 L320 8" fill="none" stroke="#a47aff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="chart-labels"><span>ПН</span><span>ВТ</span><span>СР</span><span>ЧТ</span><span>ПТ</span><span>СБ</span><span>ВС</span></div>
+        <p class="muted small">Иллюстративный график, не реальные исторические данные.</p>
+      </div>
 
-      <button id="profileBtn" class="btn secondary" type="button">
-        Мой профиль
-      </button>
+      <div class="card">
+        <div class="section-head">
+          <h2>Последние операции</h2>
+          <button id="seeAll" class="btn secondary mini" type="button">Все →</button>
+        </div>
+        <div id="recentTransactions"></div>
+      </div>
+    </section>
 
-      <div id="actionMessage" aria-live="polite"></div>
-    </div>
+    <section id="assetsPage" class="hidden">
+      <div class="card">
+        <h2>Мои активы</h2>
+        <input id="assetSearch" class="search" type="search" placeholder="⌕ Поиск актива...">
+        <div id="assetList" class="asset-list"></div>
+        <div class="notice">Демонстрационные цены приведены только для примера дизайна.</div>
+      </div>
+    </section>
 
-    <div id="historySection" class="card hidden">
-      <div class="row">
+    <section id="historyPage" class="hidden">
+      <div class="card">
         <h2>История операций</h2>
-        <button id="closeHistoryBtn" class="btn secondary smallbtn" type="button">
-          Закрыть
-        </button>
+        <div id="fullTransactions"></div>
+        <button id="clearHistory" class="btn secondary" type="button">Очистить историю на этом устройстве</button>
+        <p class="muted small">История хранится локально в браузере и не является серверной записью.</p>
       </div>
+    </section>
 
-      <div id="transactionList"></div>
-    </div>
+    <section id="profilePage" class="hidden">
+      <div class="card">
+        <h2>Мой профиль</h2>
+        <div class="profile-line"><div class="muted small">Имя пользователя</div><div id="profileUsername">—</div></div>
+        <div class="profile-line"><div class="muted small">Электронная почта</div><div id="profileEmail"></div></div>
+        <div class="profile-line"><div class="muted small">ID аккаунта</div><div id="profileId"></div></div>
+        <div class="profile-line"><div class="muted small">Тип аккаунта</div><div>Пользователь · Demo</div></div>
+        <div class="notice">Это не административная панель. Управление другими аккаунтами должно выполняться через защищённый сервер.</div>
+      </div>
+    </section>
 
-    <div id="profileSection" class="card hidden">
-      <h2>Мой профиль</h2>
-      <p class="muted small">Электронная почта</p>
-      <p id="profileEmail"></p>
-
-      <p class="muted small">ID аккаунта</p>
-      <p id="profileId" style="overflow-wrap:anywhere"></p>
-
-      <p class="muted small">Имя пользователя</p>
-      <p id="profileUsername">Не указано</p>
-
-      <button id="closeProfileBtn" class="btn secondary" type="button">
-        Закрыть профиль
-      </button>
-    </div>
-
-    <div class="notice">
-      Баланс и история операций в этой версии хранятся локально в браузере.
-      Они не являются настоящими криптовалютными активами и не синхронизируются
-      между устройствами.
-    </div>
-
+    <div id="actionMessage" aria-live="polite"></div>
   </section>
-
 </main>
 
-<footer>
-  KH WALLET © 2026 · Демонстрационный проект
-</footer>
+<nav id="bottomNav" class="bottom-nav hidden" aria-label="Главная навигация">
+  <button class="nav-btn active" data-page="homePage" type="button"><span>⌂</span>Главная</button>
+  <button class="nav-btn" data-page="assetsPage" type="button"><span>◈</span>Активы</button>
+  <button class="nav-btn" data-page="historyPage" type="button"><span>↔</span>История</button>
+  <button class="nav-btn" data-page="profilePage" type="button"><span>♙</span>Профиль</button>
+</nav>
+
+<footer>KH WALLET PRO · DEMO VERSION</footer>
 
 <script>
-(function () {
+(function(){
   "use strict";
 
   const SUPABASE_URL = "https://zagxjurbctutpxqzhfle.supabase.co";
   const SUPABASE_KEY = "sb_publishable_ahVM6UUtzD1phmSlgFp2kA_5tbJ_vKi";
-
   const $ = id => document.getElementById(id);
 
   let client = null;
@@ -542,441 +444,366 @@ footer {
   let isRegister = false;
   let balance = 1000;
   let transactions = [];
+  let balanceHidden = false;
 
-  function show(id) {
-    $(id).classList.remove("hidden");
+  const assets = [
+    {name:"Bitcoin",symbol:"BTC",icon:"₿",price:"Демо-котировка",change:"+2.40%"},
+    {name:"Ethereum",symbol:"ETH",icon:"Ξ",price:"Демо-котировка",change:"+1.80%"},
+    {name:"Tether",symbol:"USDT",icon:"₮",price:"Демо-котировка",change:"Стабильный актив"}
+  ];
+
+  function show(id){$(id).classList.remove("hidden")}
+  function hide(id){$(id).classList.add("hidden")}
+
+  function setMessage(id,text,type){
+    const el=$(id);
+    el.textContent=text;
+    el.className=text ? "message "+(type||"") : "";
   }
 
-  function hide(id) {
-    $(id).classList.add("hidden");
+  function usd(n){
+    return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).format(n);
   }
 
-  function message(id, text, type) {
-    const el = $(id);
-    el.textContent = text;
-    el.className = type || "";
+  function key(suffix){
+    return currentUser ? "khwallet_"+currentUser.id+"_"+suffix : "";
   }
 
-  function money(value) {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD"
-    }).format(value);
-  }
-
-  function storageKey(suffix) {
-    return currentUser ? "khwallet_" + currentUser.id + "_" + suffix : "";
-  }
-
-  function loadLocalData() {
-    const savedBalance = Number(localStorage.getItem(storageKey("balance")));
-    const savedTransactions = localStorage.getItem(storageKey("transactions"));
-
-    balance = Number.isFinite(savedBalance) && savedBalance >= 0
-      ? savedBalance
-      : 1000;
-
-    try {
-      transactions = savedTransactions ? JSON.parse(savedTransactions) : [];
-      if (!Array.isArray(transactions)) transactions = [];
-    } catch (e) {
-      transactions = [];
+  function save(){
+    if(!currentUser)return;
+    try{
+      localStorage.setItem(key("balance"),String(balance));
+      localStorage.setItem(key("transactions"),JSON.stringify(transactions));
+    }catch(e){
+      setMessage("actionMessage","Не удалось сохранить данные браузера.","error");
     }
+  }
 
-    if (!savedTransactions) {
-      transactions = [{
-        type: "Начальный демо-баланс",
-        amount: 1000,
-        date: new Date().toISOString()
-      }];
-
-      saveLocalData();
+  function load(){
+    try{
+      const b=Number(localStorage.getItem(key("balance")));
+      balance=Number.isFinite(b)&&b>=0?b:1000;
+      const raw=localStorage.getItem(key("transactions"));
+      transactions=raw?JSON.parse(raw):[];
+      if(!Array.isArray(transactions))transactions=[];
+      if(!raw){
+        transactions=[{type:"Начальный демо-баланс",amount:1000,date:new Date().toISOString()}];
+        save();
+      }
+    }catch(e){
+      balance=1000;
+      transactions=[];
     }
-
-    renderWallet();
+    render();
   }
 
-  function saveLocalData() {
-    if (!currentUser) return;
+  function renderTx(target,items){
+    const box=$(target);
+    box.replaceChildren();
 
-    localStorage.setItem(storageKey("balance"), String(balance));
-    localStorage.setItem(
-      storageKey("transactions"),
-      JSON.stringify(transactions)
-    );
-  }
-
-  function renderWallet() {
-    $("balance").textContent = money(balance);
-
-    // Это исключительно демонстрационные значения.
-    $("btcBalance").textContent = "0.000000 BTC";
-    $("ethBalance").textContent = "0.000000 ETH";
-    $("usdtBalance").textContent =
-      balance.toLocaleString("en-US", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      }) + " USDT";
-
-    const list = $("transactionList");
-    list.replaceChildren();
-
-    if (!transactions.length) {
-      const p = document.createElement("p");
-      p.className = "muted";
-      p.textContent = "Операций пока нет.";
-      list.appendChild(p);
+    if(!items.length){
+      const p=document.createElement("p");
+      p.className="muted";
+      p.textContent="Операций пока нет.";
+      box.appendChild(p);
       return;
     }
 
-    transactions.slice().reverse().forEach(tx => {
-      const row = document.createElement("div");
-      row.className = "transaction";
+    items.slice().reverse().forEach(tx=>{
+      const row=document.createElement("div");
+      row.className="transaction";
 
-      const left = document.createElement("div");
-      const title = document.createElement("strong");
-      title.textContent = tx.type;
+      const icon=document.createElement("div");
+      icon.className="tx-icon";
+      icon.textContent=tx.amount>=0?"＋":"↗";
 
-      const date = document.createElement("div");
-      date.className = "muted small";
+      const info=document.createElement("div");
+      info.className="tx-main";
 
-      const parsedDate = new Date(tx.date);
-      date.textContent = Number.isNaN(parsedDate.getTime())
-        ? ""
-        : parsedDate.toLocaleString();
+      const title=document.createElement("div");
+      title.className="tx-title";
+      title.textContent=tx.type;
 
-      left.append(title, date);
+      const date=document.createElement("div");
+      date.className="tx-date";
+      const d=new Date(tx.date);
+      date.textContent=Number.isNaN(d.getTime())?"":d.toLocaleString();
 
-      const right = document.createElement("strong");
-      right.className = tx.amount >= 0 ? "positive" : "negative";
-      right.textContent =
-        (tx.amount >= 0 ? "+" : "−") + money(Math.abs(tx.amount));
+      info.append(title,date);
 
-      row.append(left, right);
-      list.appendChild(row);
+      const amount=document.createElement("div");
+      amount.className="tx-amount "+(tx.amount>=0?"positive":"negative");
+      amount.textContent=(tx.amount>=0?"+":"−")+usd(Math.abs(tx.amount));
+
+      row.append(icon,info,amount);
+      box.appendChild(row);
     });
   }
 
-  function addTransaction(type, amount) {
-    transactions.push({
-      type: type,
-      amount: amount,
-      date: new Date().toISOString()
-    });
+  function render(){
+    $("balance").textContent=balanceHidden?"••••••":usd(balance);
+    renderTx("recentTransactions",transactions.slice(-3));
+    renderTx("fullTransactions",transactions);
 
-    saveLocalData();
-    renderWallet();
+    const assetList=$("assetList");
+    const search=($("assetSearch").value||"").trim().toLowerCase();
+    assetList.replaceChildren();
+
+    assets.filter(a=>(a.name+" "+a.symbol).toLowerCase().includes(search)).forEach(a=>{
+      const row=document.createElement("div");
+      row.className="asset";
+
+      const icon=document.createElement("div");
+      icon.className="coin-icon";
+      icon.textContent=a.icon;
+
+      const info=document.createElement("div");
+      info.className="coin-info";
+
+      const name=document.createElement("div");
+      name.className="coin-name";
+      name.textContent=a.name;
+
+      const symbol=document.createElement("div");
+      symbol.className="coin-symbol";
+      symbol.textContent=a.symbol+" · Демо-актив";
+
+      info.append(name,symbol);
+
+      const right=document.createElement("div");
+      right.className="coin-right";
+
+      const price=document.createElement("div");
+      price.className="coin-price";
+      price.textContent=a.price;
+
+      const change=document.createElement("div");
+      change.className="change";
+      change.textContent=a.change;
+
+      right.append(price,change);
+      row.append(icon,info,right);
+      assetList.appendChild(row);
+    });
   }
 
-  function showAuth() {
+  function authScreen(){
     hide("loading");
     show("authSection");
     hide("walletSection");
+    hide("bottomNav");
   }
 
-  function showWallet(user) {
-    currentUser = user;
-
+  function walletScreen(user){
+    currentUser=user;
     hide("loading");
     hide("authSection");
     show("walletSection");
+    show("bottomNav");
 
-    const email = user.email || "";
-    const username =
-      user.user_metadata && user.user_metadata.username
-        ? user.user_metadata.username
-        : email.split("@")[0] || "Пользователь";
+    const email=user.email||"";
+    const username=user.user_metadata&&user.user_metadata.username
+      ?user.user_metadata.username
+      :(email.split("@")[0]||"Пользователь");
 
-    $("welcomeTitle").textContent = "Привет, " + username + "!";
-    $("userEmail").textContent = email;
-    $("profileEmail").textContent = email;
-    $("profileId").textContent = user.id;
-    $("profileUsername").textContent = username;
+    $("welcomeTitle").textContent="Привет, "+username+"!";
+    $("userEmail").textContent=email;
+    $("profileEmail").textContent=email;
+    $("profileId").textContent=user.id;
+    $("profileUsername").textContent=username;
 
-    loadLocalData();
+    load();
+    navigate("homePage");
   }
 
-  function setAuthMode(register) {
-    isRegister = register;
+  function setMode(register){
+    isRegister=register;
+    $("loginTab").classList.toggle("active",!register);
+    $("registerTab").classList.toggle("active",register);
+    $("authTitle").textContent=register?"Создать аккаунт":"С возвращением";
+    $("authSubmit").textContent=register?"Зарегистрироваться":"Войти";
+    $("password").autocomplete=register?"new-password":"current-password";
 
-    $("authTitle").textContent = register
-      ? "Создание аккаунта"
-      : "Вход в аккаунт";
+    if(register)show("usernameWrap");
+    else hide("usernameWrap");
 
-    $("authSubmit").textContent = register
-      ? "Зарегистрироваться"
-      : "Войти";
-
-    $("registerTab").classList.toggle("active", register);
-    $("loginTab").classList.toggle("active", !register);
-
-    if (register) {
-      show("usernameWrap");
-      $("password").setAttribute("autocomplete", "new-password");
-    } else {
-      hide("usernameWrap");
-      $("password").setAttribute("autocomplete", "current-password");
-    }
-
-    message("authMessage", "", "");
+    setMessage("authMessage","","");
   }
 
-  async function init() {
-    if (!window.supabase || !window.supabase.createClient) {
-      hide("loading");
-      showAuth();
-      message(
-        "authMessage",
-        "Не удалось загрузить библиотеку. Проверь подключение к интернету и обнови страницу.",
-        "error"
-      );
+  function navigate(page){
+    ["homePage","assetsPage","historyPage","profilePage"].forEach(id=>hide(id));
+    show(page);
+
+    document.querySelectorAll(".nav-btn").forEach(btn=>{
+      btn.classList.toggle("active",btn.dataset.page===page);
+    });
+
+    window.scrollTo({top:0,behavior:"smooth"});
+    if(page==="historyPage")renderTx("fullTransactions",transactions);
+  }
+
+  async function init(){
+    if(!window.supabase||!window.supabase.createClient){
+      authScreen();
+      setMessage("authMessage","Не загрузилась библиотека Supabase. Проверь интернет и обнови страницу.","error");
       return;
     }
 
-    try {
-      client = window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-      );
+    try{
+      client=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 
-      const result = await client.auth.getSession();
+      const {data,error}=await client.auth.getSession();
+      if(error)throw error;
 
-      if (result.error) throw result.error;
+      if(data.session)walletScreen(data.session.user);
+      else authScreen();
 
-      if (result.data.session) {
-        showWallet(result.data.session.user);
-      } else {
-        showAuth();
-      }
-
-      client.auth.onAuthStateChange(function (event, session) {
-        if (session && session.user) {
-          showWallet(session.user);
-        } else if (event === "SIGNED_OUT") {
-          currentUser = null;
-          showAuth();
+      client.auth.onAuthStateChange((event,session)=>{
+        if(session&&session.user)walletScreen(session.user);
+        else if(event==="SIGNED_OUT"){
+          currentUser=null;
+          hide("walletSection");
+          hide("bottomNav");
+          authScreen();
         }
       });
-
-    } catch (error) {
-      showAuth();
-      message(
-        "authMessage",
-        "Ошибка подключения: " + (error.message || "неизвестная ошибка"),
-        "error"
-      );
+    }catch(e){
+      authScreen();
+      setMessage("authMessage","Ошибка подключения: "+(e.message||"неизвестная ошибка"),"error");
     }
   }
 
-  $("loginTab").addEventListener("click", function () {
-    setAuthMode(false);
-  });
+  $("loginTab").addEventListener("click",()=>setMode(false));
+  $("registerTab").addEventListener("click",()=>setMode(true));
 
-  $("registerTab").addEventListener("click", function () {
-    setAuthMode(true);
-  });
+  $("authForm").addEventListener("submit",async e=>{
+    e.preventDefault();
 
-  $("authForm").addEventListener("submit", async function (event) {
-    event.preventDefault();
-
-    if (!client) {
-      message(
-        "authMessage",
-        "Сервис пока не подключён. Обнови страницу.",
-        "error"
-      );
+    if(!client){
+      setMessage("authMessage","Supabase не подключён. Обнови страницу.","error");
       return;
     }
 
-    const email = $("email").value.trim();
-    const password = $("password").value;
-    const username = $("username").value.trim();
+    const email=$("email").value.trim();
+    const password=$("password").value;
+    const username=$("username").value.trim();
 
-    if (isRegister && username.length < 3) {
-      message(
-        "authMessage",
-        "Имя пользователя должно содержать минимум 3 символа.",
-        "error"
-      );
+    if(isRegister&&username.length<3){
+      setMessage("authMessage","Имя пользователя должно содержать минимум 3 символа.","error");
       return;
     }
 
-    $("authSubmit").disabled = true;
-    $("authSubmit").textContent = "Подождите...";
-    message("authMessage", "", "");
+    $("authSubmit").disabled=true;
+    $("authSubmit").textContent="Подождите...";
+    setMessage("authMessage","","");
 
-    try {
-      let result;
-
-      if (isRegister) {
-        result = await client.auth.signUp({
-          email: email,
-          password: password,
-          options: {
-            data: {
-              username: username
-            },
-            emailRedirectTo: window.location.origin + window.location.pathname
+    try{
+      if(isRegister){
+        const {data,error}=await client.auth.signUp({
+          email,
+          password,
+          options:{
+            data:{username},
+            emailRedirectTo:window.location.origin+window.location.pathname
           }
         });
 
-        if (result.error) throw result.error;
+        if(error)throw error;
 
-        if (result.data.session) {
-          showWallet(result.data.user);
-        } else {
-          message(
-            "authMessage",
-            "Аккаунт создан! Проверь почту и подтверди регистрацию, если Supabase запросил подтверждение.",
-            "success"
-          );
+        if(data.session&&data.user){
+          walletScreen(data.user);
+        }else{
+          setMessage("authMessage","Аккаунт создан. Проверь почту и подтверди регистрацию, если Supabase запросил подтверждение.","success");
         }
-
-      } else {
-        result = await client.auth.signInWithPassword({
-          email: email,
-          password: password
-        });
-
-        if (result.error) throw result.error;
-
-        showWallet(result.data.user);
+      }else{
+        const {data,error}=await client.auth.signInWithPassword({email,password});
+        if(error)throw error;
+        walletScreen(data.user);
       }
-
-    } catch (error) {
-      message(
-        "authMessage",
-        "Ошибка: " + (error.message || "не удалось выполнить запрос"),
-        "error"
-      );
-    } finally {
-      $("authSubmit").disabled = false;
-      $("authSubmit").textContent = isRegister
-        ? "Зарегистрироваться"
-        : "Войти";
+    }catch(error){
+      setMessage("authMessage","Ошибка: "+(error.message||"не удалось выполнить запрос"),"error");
+    }finally{
+      $("authSubmit").disabled=false;
+      $("authSubmit").textContent=isRegister?"Зарегистрироваться":"Войти";
     }
   });
 
-  $("logoutBtn").addEventListener("click", async function () {
-    if (!client) return;
-
-    const result = await client.auth.signOut();
-
-    if (result.error) {
-      message(
-        "actionMessage",
-        "Не удалось выйти: " + result.error.message,
-        "error"
-      );
-    } else {
-      currentUser = null;
-      hide("walletSection");
-      showAuth();
-    }
+  $("logoutBtn").addEventListener("click",async()=>{
+    if(!client)return;
+    const {error}=await client.auth.signOut();
+    if(error)setMessage("actionMessage","Ошибка выхода: "+error.message,"error");
   });
 
-  $("depositBtn").addEventListener("click", function () {
-    const value = prompt(
-      "Введите сумму виртуального пополнения в USD:"
-    );
+  $("toggleBalance").addEventListener("click",()=>{
+    balanceHidden=!balanceHidden;
+    render();
+    $("toggleBalance").textContent=balanceHidden?"◎":"◉";
+  });
 
-    if (value === null) return;
+  $("depositBtn").addEventListener("click",()=>{
+    const raw=prompt("Сумма виртуального пополнения в USD:");
+    if(raw===null)return;
+    const amount=Number(raw);
 
-    const amount = Number(value);
-
-    if (!Number.isFinite(amount) || amount <= 0 || amount > 1000000) {
-      message(
-        "actionMessage",
-        "Введи корректную сумму больше 0 и не более 1 000 000.",
-        "error"
-      );
+    if(!Number.isFinite(amount)||amount<=0||amount>1000000){
+      setMessage("actionMessage","Введи корректную сумму от 0 до 1 000 000.","error");
       return;
     }
 
-    balance += amount;
-    addTransaction("Виртуальное пополнение", amount);
-
-    message(
-      "actionMessage",
-      "Демо-баланс обновлён. Реальные деньги не переводились.",
-      "success"
-    );
+    balance+=amount;
+    transactions.push({type:"Виртуальное пополнение",amount,date:new Date().toISOString()});
+    save();
+    render();
+    setMessage("actionMessage","Демо-баланс обновлён. Реальные деньги не переводились.","success");
   });
 
-  $("sendBtn").addEventListener("click", function () {
-    const value = prompt(
-      "Введите сумму виртуального перевода в USD:"
-    );
+  $("sendBtn").addEventListener("click",()=>{
+    const raw=prompt("Сумма виртуального перевода в USD:");
+    if(raw===null)return;
+    const amount=Number(raw);
 
-    if (value === null) return;
-
-    const amount = Number(value);
-
-    if (!Number.isFinite(amount) || amount <= 0) {
-      message(
-        "actionMessage",
-        "Введи корректную сумму больше нуля.",
-        "error"
-      );
+    if(!Number.isFinite(amount)||amount<=0){
+      setMessage("actionMessage","Введи корректную сумму.","error");
       return;
     }
 
-    if (amount > balance) {
-      message(
-        "actionMessage",
-        "Недостаточно виртуальных средств.",
-        "error"
-      );
+    if(amount>balance){
+      setMessage("actionMessage","Недостаточно виртуальных средств.","error");
       return;
     }
 
-    const recipient = prompt("Имя получателя (демо):");
+    const recipient=prompt("Имя получателя (демо):");
+    if(recipient===null||!recipient.trim())return;
 
-    if (recipient === null || !recipient.trim()) return;
-
-    balance -= amount;
-    addTransaction("Демо-перевод: " + recipient.trim(), -amount);
-
-    message(
-      "actionMessage",
-      "Демо-операция выполнена. Реальный перевод не производился.",
-      "success"
-    );
-  });
-
-  $("historyBtn").addEventListener("click", function () {
-    show("historySection");
-    hide("profileSection");
-    renderWallet();
-
-    $("historySection").scrollIntoView({
-      behavior: "smooth",
-      block: "start"
+    balance-=amount;
+    transactions.push({
+      type:"Демо-перевод: "+recipient.trim(),
+      amount:-amount,
+      date:new Date().toISOString()
     });
+
+    save();
+    render();
+    setMessage("actionMessage","Демо-операция записана. Реальный перевод не производился.","success");
   });
 
-  $("closeHistoryBtn").addEventListener("click", function () {
-    hide("historySection");
+  $("seeAll").addEventListener("click",()=>navigate("historyPage"));
+  $("assetSearch").addEventListener("input",render);
+
+  $("clearHistory").addEventListener("click",()=>{
+    if(!confirm("Очистить локальную историю операций?"))return;
+    transactions=[];
+    save();
+    render();
   });
 
-  $("profileBtn").addEventListener("click", function () {
-    show("profileSection");
-    hide("historySection");
-
-    $("profileSection").scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
+  document.querySelectorAll(".nav-btn").forEach(btn=>{
+    btn.addEventListener("click",()=>navigate(btn.dataset.page));
   });
 
-  $("closeProfileBtn").addEventListener("click", function () {
-    hide("profileSection");
-  });
-
-  setAuthMode(false);
+  setMode(false);
   init();
 })();
 </script>
-
 </body>
 </html>
